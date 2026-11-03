@@ -28,13 +28,27 @@ Resources:
    AttributeDefinitions:
     - AttributeName: TransactionId
       AttributeType: S
+    - AttributeName: CustomerId
+      AttributeType: S
+    - AttributeName: TransactionTimestamp
+      AttributeType: S
 
    KeySchema:
     - AttributeName: TransactionId
       KeyType: HASH
-
+   GlobalSecondaryIndexes:
+    - IndexName: CustomerTransactionIndex
+      KeySchema:
+        - AttributeName: CustomerId
+          KeyType: HASH
+        - AttributeName: TransactionTimestamp
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL
+   StreamSpecification:
+     StreamViewType: NEW_IMAGE
    SSESpecification:
-    SSEEnabled: true
+     SSEEnabled: true
 
 ##DynamoDB Table 3:
  TransactionHistoryTable:
@@ -43,19 +57,19 @@ Resources:
    TableName: FinCrime-TransactionHistoryTable
    BillingMode: PAY_PER_REQUEST
 
-   AttributeDefinitions:
+  AttributeDefinitions:
     - AttributeName: CustomerId
       AttributeType: S
        
-    - AttributeName: TransactionTimeStamp 
+    - AttributeName: TransactionTimestamp 
       AttributeType: S
 
-   KeySchema:
+  KeySchema:
     - AttributeName: CustomerId 
       KeyType: HASH
 
-    - AttributeName: TransactionTimeStamp
+    - AttributeName: TransactionTimestamp
       KeyType: RANGE
 
-   SSESpecification:
-    SSEEnabled: true
+  SSESpecification:
+   SSEEnabled: true
