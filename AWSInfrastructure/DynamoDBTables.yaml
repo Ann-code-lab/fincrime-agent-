@@ -6,7 +6,7 @@ Resources:
    TableName: FinCrime-Customers
    BillingMode: PAY_PER_REQUEST
 
-   AttributeDefenitions:
+   AttributeDefinitions:
     - AttributeName: CustomerId
       AttributeType: S
 
@@ -25,7 +25,7 @@ Resources:
    TableName: FinCrime-Transactions
    BillingMode: PAY_PER_REQUEST
 
-   AttributeDefenitions:
+   AttributeDefinitions:
     - AttributeName: TransactionId
       AttributeType: S
 
@@ -36,14 +36,14 @@ Resources:
    SSESpecification:
     SSEEnabled: true
 
-DynamoDB Table 3:
+##DynamoDB Table 3:
  TransactionHistoryTable:
   Type: AWS::DynamoDB::Table
   Properties:
-   TableName: FinCrime- TransactionHistoryTable
+   TableName: FinCrime-TransactionHistoryTable
    BillingMode: PAY_PER_REQUEST
 
-   AttributeDefenition:
+   AttributeDefinitions:
     - AttributeName: CustomerId
       AttributeType: S
        
